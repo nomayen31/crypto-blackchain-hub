@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const navItems = [
   { name: 'Home', href: '#' },
@@ -37,15 +38,15 @@ export const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a 
-          href="#" 
+        <Link 
+          to="/" 
           className="relative z-10 flex items-center space-x-2"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-crypto-blue to-crypto-purple flex items-center justify-center">
             <span className="text-white font-bold text-lg">CB</span>
           </div>
           <span className="font-bold text-xl">CryptoBlock</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
@@ -62,12 +63,14 @@ export const Navbar = () => {
             ))}
           </ul>
           <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              className="text-sm font-medium"
-            >
-              Sign In
-            </Button>
+            <Link to="/sign-in">
+              <Button
+                variant="ghost"
+                className="text-sm font-medium"
+              >
+                Sign In
+              </Button>
+            </Link>
             <Button
               className="bg-crypto-blue hover:bg-crypto-blue/90 text-white rounded-full px-6"
             >
@@ -109,13 +112,14 @@ export const Navbar = () => {
               ))}
             </ul>
             <div className="mt-12 flex flex-col space-y-4">
-              <Button
-                variant="ghost"
-                className="text-base font-medium"
-                onClick={toggleMenu}
-              >
-                Sign In
-              </Button>
+              <Link to="/sign-in" onClick={toggleMenu}>
+                <Button
+                  variant="ghost"
+                  className="text-base font-medium w-full"
+                >
+                  Sign In
+                </Button>
+              </Link>
               <Button
                 className="bg-crypto-blue hover:bg-crypto-blue/90 text-white rounded-full px-6 py-5 text-base"
                 onClick={toggleMenu}
